@@ -10,18 +10,28 @@ import userProfile from './user-profile.png';
 class Railcard extends Component {
     render() {
         return (
-          <AFrameRenderer arToolKit={{ sourceType: 'webcam' }}>
-            <Marker parameters={{
+          <AFrameRenderer arToolKit={{ sourceType: "webcam" }}>
+            <Marker
+              parameters={{
                 preset: "pattern",
                 type: "pattern",
-                url: "https://raw.githubusercontent.com/lbelfield/augmented-reality/master/src/components/trainTicket/train-ticket.patt"
-              }}>
-              <a-assets-item img id="appTicket" src={appTicket} />
+                url:
+                  "https://raw.githubusercontent.com/lbelfield/augmented-reality/master/src/components/trainTicket/train-ticket.patt",
+              }}
+            >
+              {/* <a-assets-item img id="appTicket" src={appTicket} /> */}
+              {/* <img id="platform" src="https://i.imgur.com/mYmmbrp.jpg"></img> */}
+              {/* test "image by url" */}
+              <a-assets-item
+                img
+                id="appTicket"
+                src="https://i.imgur.com/mYmmbrp.jpg"
+              />
+
               <a-assets-item img id="journeyDetails" src={journeyDetails} />
               <a-assets-item img id="informationIcon" src={informationIcon} />
               <a-assets-item img id="trainIcon" src={trainIcon} />
               <a-assets-item img id="userProfile" src={userProfile} />
-
               <a-entity camera look-controls mouse-cursor>
                 <a-entity
                   id="ticket"
@@ -30,12 +40,15 @@ class Railcard extends Component {
                   position="1 0 0"
                   geometry="primitive: box; height: 0.1; depth: 1.5; rotation: 90 0 0;"
                   material="shader: flat;"
-                  visible="false">
-                  <a-animation attribute="position"
+                  visible="false"
+                >
+                  <a-animation
+                    attribute="position"
                     dur="3000"
                     begin="ticketAnimation"
                     from="0 0 0"
-                    to="1 0 0"/>
+                    to="1 0 0"
+                  />
                 </a-entity>
 
                 <a-entity
@@ -45,12 +58,15 @@ class Railcard extends Component {
                   position="2 0 0"
                   geometry="primitive: box; height: 0.1; depth: 1.5; rotation: 90 0 0;"
                   material="shader: flat; src: #journeyDetails"
-                  visible="false">
-                  <a-animation attribute="position"
+                  visible="false"
+                >
+                  <a-animation
+                    attribute="position"
                     dur="3000"
                     begin="journeyDetailsAnimation"
                     from="1 0.1 0"
-                    to="2 0.01 0"/>
+                    to="2 0.01 0"
+                  />
                 </a-entity>
 
                 <a-entity
@@ -59,18 +75,18 @@ class Railcard extends Component {
                   cursor="fuse: true; fuseTimeout: 500"
                   position="-0.25 0.1 0.5"
                   geometry="primitive: cylinder; height: 0.1; radius: 0.15"
-                  material="shader: flat; src: #informationIcon" />
+                  material="shader: flat; src: #informationIcon"
+                />
 
-                  <a-entity
+                <a-entity
                   id="cylinder-train-icon"
                   cylinder-train-icon-listener
                   cursor="fuse: true; fuseTimeout: 500"
                   position="0.25 0.1 0.5"
                   geometry="primitive: cylinder; height: 0.1; radius: 0.15"
-                  material="shader: flat; src: #trainIcon" />
-
+                  material="shader: flat; src: #trainIcon"
+                />
               </a-entity>
-
             </Marker>
           </AFrameRenderer>
         );
